@@ -6,42 +6,61 @@ public class Shop {
 
     private static Scanner scanner = new Scanner(System.in);
     private static String[] pesels = new String[]{"12345", "12987", "123"};
+    private static String[] products = new String[]{"Samsung TV", "Macbook", "iPhone"};
+    private static int[] productStocks = new int[]{3, 6, 0};
 
     public static void main(String[] args) {
 
+        displayProducts();
 
-        String productName = "";
-        double productPrice;
-        int howManyInstallements;
-        String pesel;
-
-        System.out.println("Podaj nazwę towaru:");
-        if(scanner.hasNext()) {
-            productName = scanner.next();
-        }
-        productPrice = setProductPrice();
-        howManyInstallements = setInstallmentsNumber();
-        pesel = setPesel();
-        double interestsPercent= getInterestsPercent(howManyInstallements);
-        double interestsPercentToDisplay = interestsPercent*100;
+        String productName = setProduct();
+        double productPrice = setProductPrice();
+        int howManyInstallements = setInstallmentsNumber();
+        String pesel = setPesel();
+        float interestsPercent= getInterestsPercent(howManyInstallements);
+        float interestsPercentToDisplay = interestsPercent * 100;
         double installment = calculateInstallments(productPrice, howManyInstallements, interestsPercent);
 
         displayInfo(productName, productPrice, pesel, howManyInstallements, interestsPercentToDisplay, installment);
 
     }
 
-    private static void displayInfo(String productName, double productPrice, String pesel, int installmentsNumber, double interestsPercent, double installment) {
-        System.out.println("Product name:" + productName);
-        System.out.println("Product price:" + productPrice);
-        System.out.println("PESEL:" + pesel);
-        System.out.println("Ilość rat:" + installmentsNumber);
+    private static void displayProducts() {
+        System.out.println("Lista produktów: ");
+        for (String product: products) {
+            System.out.println(product);
+        }
+    }
+
+    private static String setProduct() {
+        System.out.println("Podaj nazwę produktu:");
+        String productName;
+        if(scanner.hasNext()) {
+            productName = scanner.next();
+            for (int i=0 ; i < products.length; i++) {
+                if (productName.equalsIgnoreCase(products[i]) && productStocks[i] > 0) {
+                    return productName;
+                }
+            }
+
+            System.out.println("Nie posiadamy takiego produktu lub nie ma go w stocku.");
+        }
+
+        return setProduct();
+    }
+
+    private static void displayInfo(String productName, double productPrice, String pesel, int installmentsNumber, float interestsPercent, double installment) {
+        System.out.println("Product name: " + productName);
+        System.out.println("Product price: " + productPrice);
+        System.out.println("PESEL: " + pesel);
+        System.out.println("Ilość rat: " + installmentsNumber);
         System.out.println("Procent odsetek: " + interestsPercent + "%");
         System.out.println("Wysokość raty: " + installment);
     }
 
     private static double setProductPrice() {
         System.out.println("Podaj cenę towaru:");
-        double priceDouble = 0.0;
+        double priceDouble;
         try {
             if (scanner.hasNext()) {
                 priceDouble = Double.valueOf(scanner.next());
@@ -85,12 +104,10 @@ public class Shop {
                  return pesel;
              } else {
                  System.out.println("Pesel nieprawidłowy. Raty nieprzyznane");
-//                 return setPesel();
              }
          }
          System.exit(0);
          return "";
-//        return setPesel();
     }
 
     private static boolean isPeselCorrect(String pesel){
@@ -103,16 +120,16 @@ public class Shop {
         return false;
     }
 
-    private static double getInterestsPercent(int howManyInstallments){
+    private static float getInterestsPercent(int howManyInstallments){
         if(howManyInstallments >= 6 && howManyInstallments <= 12 ) {
-            return 0.035;
+            return 0.035f;
         } else if(howManyInstallments >= 13 && howManyInstallments <= 24 ) {
-            return 0.055;
+            return 0.055f;
         } else if(howManyInstallments >= 25 && howManyInstallments <= 48 ) {
-            return 0.12;
+            return 0.12f;
         }
         System.out.println("Nieprawidłowa ilość rat");
-        return 0.0;
+        return 0.0f;
     }
 
     private static double calculateInstallments(double productPrice, int installmentsNumber, double percent){

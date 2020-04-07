@@ -1,6 +1,6 @@
 package usedclasses.service;
 
-import usedclasses.product.Product;
+import usedclasses.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;

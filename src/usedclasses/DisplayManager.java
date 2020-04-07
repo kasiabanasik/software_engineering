@@ -1,6 +1,6 @@
 package usedclasses;
 
-import usedclasses.product.Product;
+import usedclasses.model.Product;
 
 import java.util.List;
 

@@ -25,15 +25,12 @@ public class ConsoleManager {
     public String getProductName() {
         System.out.println("Podaj nazwę produktu:");
         String productName;
-        if(scanner.hasNext()) {
-            productName = scanner.next();
-            if (productService.checkIfProductIsAvailable(productName)) {
-                return productName;
-            }
-
-            System.out.println("Nie posiadamy takiego produktu lub nie ma go w stocku.");
+        productName = scanner.next();
+        if (productService.checkIfProductIsAvailable(productName)) {
+            return productName;
         }
 
+        System.out.println("Nie posiadamy takiego produktu lub nie ma go w stocku.");
         return getProductName();
     }
 
@@ -41,53 +38,46 @@ public class ConsoleManager {
         System.out.println("Podaj cenę towaru:");
         double priceDouble;
         try {
-            if (scanner.hasNext()) {
-                priceDouble = Double.valueOf(scanner.next());
-                if (priceService.isPriceCorrect(priceDouble)) {
-                    return priceDouble;
-                } else {
-                    System.out.println("Cena produktu musi mieścić się w granicach: 1500 - 40 tys");
-                    return getProductPrice();
-                }
+            priceDouble = Double.valueOf(scanner.next());
+            if (priceService.isPriceCorrect(priceDouble)) {
+                return priceDouble;
+            } else {
+                System.out.println("Cena produktu musi mieścić się w granicach: 1500 - 40 tys");
+                return getProductPrice();
             }
         } catch (NumberFormatException e) {
             System.out.println("Zły fromat ceny.");
             return getProductPrice();
         }
-        return getProductPrice();
     }
 
-    public int getInstallmentsNumber(){
+    public int getInstallmentsNumber() {
         System.out.println("Podaj liczbę rat:");
 
-         if(scanner.hasNext()) {
-             String howManyString = scanner.next();
-             try {
-                int howMany = Integer.parseInt(howManyString);
+        String howManyString = scanner.next();
+        try {
+            int howMany = Integer.parseInt(howManyString);
 
-                if (installmentsService.isTheInstallmentsAmounCorrect(howMany)) {
-                    return howMany;
-                }
-                System.out.println("Ilosć rat musi się mieścić w granicach 8 - 48");
-             } catch (NumberFormatException e) {
-                 System.out.println("Give the correct price amount:");
-                 return getInstallmentsNumber();
-             }
-         }
+            if (installmentsService.isTheInstallmentsAmounCorrect(howMany)) {
+                return howMany;
+            }
+            System.out.println("Ilosć rat musi się mieścić w granicach 6 - 48");
+        } catch (NumberFormatException e) {
+            System.out.println("Give the correct price amount:");
+            return getInstallmentsNumber();
+        }
         return getInstallmentsNumber();
     }
 
-    public String getPesel(){
+    public String getPesel() {
         System.out.println("Podaj pesel:");
-         if(scanner.hasNext()) {
-             String pesel = scanner.next();
-             if(peselService.isPeselCorrect(pesel)){
-                 return pesel;
-             } else {
-                 System.out.println("Pesel nieprawidłowy. Raty nieprzyznane");
-             }
-         }
-         System.exit(0);
-         return "";
+        String pesel = scanner.next();
+        if (peselService.isPeselCorrect(pesel)) {
+            return pesel;
+        } else {
+            System.out.println("Pesel nieprawidłowy. Raty nieprzyznane");
+        }
+        System.exit(0);
+        return "";
     }
 }

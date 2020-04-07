@@ -1,6 +1,6 @@
 package usedclasses;
 
-import usedclasses.product.Product;
+import usedclasses.model.Product;
 import usedclasses.service.InstallmentsService;
 import usedclasses.service.PeselService;
 import usedclasses.service.PriceService;
@@ -17,6 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
         List<Product> productList = productService.getProductList();
+
         displayManager.displayProducts(productList);
 
         String productName = consoleManager.getProductName();

@@ -5,8 +5,8 @@ import java.util.Date;
 
 public class Price {
 
-    BigDecimal value;
-    Date date;
+    private BigDecimal value;
+    private Date date;
 
     public Price(BigDecimal value, Date date) {
         this.value = value;

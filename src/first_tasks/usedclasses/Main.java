@@ -1,10 +1,10 @@
-package usedclasses;
+package first_tasks.usedclasses;
 
-import usedclasses.model.Product;
-import usedclasses.service.InstallmentsService;
-import usedclasses.service.PeselService;
-import usedclasses.service.PriceService;
-import usedclasses.service.ProductService;
+import first_tasks.usedclasses.model.Product;
+import first_tasks.usedclasses.service.InstallmentsService;
+import first_tasks.usedclasses.service.PeselService;
+import first_tasks.usedclasses.service.PriceService;
+import first_tasks.usedclasses.service.ProductService;
 
 import java.util.List;
 

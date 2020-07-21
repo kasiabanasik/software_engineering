@@ -1,3 +1,5 @@
+package first_tasks.some.shop;
+
 import java.util.Random;
 
 public class Test {

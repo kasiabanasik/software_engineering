@@ -1,4 +1,4 @@
-package usedclasses.service;
+package first_tasks.usedclasses.service;
 
 public class PriceService {
 

@@ -1,4 +1,4 @@
-package shop;
+package first_tasks.some.shop;
 
 import java.util.Scanner;
 

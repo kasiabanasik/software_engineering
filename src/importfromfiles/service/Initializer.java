@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import static importfromfiles.constants.FilesConstants.*;
+import static importfromfiles.constants.PathsConstants.*;
 
 public class Initializer {
 
@@ -42,9 +42,12 @@ public class Initializer {
             scanner = new Scanner(products);
             while (scanner.hasNextLine()) {
                 String priceLine = scanner.nextLine();
-                String[] splitted = priceLine.split(SEPARATOR.getValue());
-                if (productService.isProductOnList(splitted[0])) {
-                    productService.addPriceToProduct(splitted[0], new Price(BigDecimal.valueOf(Integer.parseInt(splitted[1])), new Date(splitted[2])));
+                String[] splittedPriceLine = priceLine.split(SEPARATOR.getValue());
+                String productName = splittedPriceLine[0];
+                String value = splittedPriceLine[1];
+                String date = splittedPriceLine[2];
+                if (productService.isProductOnList(productName)) {
+                    productService.addPriceToProduct(productName, new Price(BigDecimal.valueOf(Integer.parseInt(value)), new Date(date)));
                 }
             }
         } catch (FileNotFoundException e) {
@@ -61,9 +64,12 @@ public class Initializer {
             scanner = new Scanner(stocks);
             while (scanner.hasNextLine()) {
                 String stockLine = scanner.nextLine();
-                String[] splitted = stockLine.split(SEPARATOR.getValue());
-                if (productService.isProductOnList(splitted[0])) {
-                    productStocks.put(splitted[0], new Stock(splitted[1], splitted[2]));
+                String[] splittedStockLine = stockLine.split(SEPARATOR.getValue());
+                String productName = splittedStockLine[0];
+                String quantity = splittedStockLine[1];
+                String date = splittedStockLine[2];
+                if (productService.isProductOnList(productName)) {
+                    productStocks.put(productName, new Stock(quantity, date));
                 }
             }
             List<Product> productList = productService.getProductList();

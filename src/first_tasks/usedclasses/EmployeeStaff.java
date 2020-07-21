@@ -1,3 +1,5 @@
+package first_tasks.usedclasses;
+
 import java.util.Random;
 import java.util.Scanner;
 

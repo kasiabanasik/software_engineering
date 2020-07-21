@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static importfromfiles.constants.FilesConstants.*;
+import static importfromfiles.constants.PathsConstants.*;
 
 public class StockService {
 

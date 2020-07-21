@@ -1,6 +1,6 @@
-package usedclasses;
+package first_tasks.usedclasses;
 
-import usedclasses.model.Product;
+import first_tasks.usedclasses.model.Product;
 
 import java.util.List;
 

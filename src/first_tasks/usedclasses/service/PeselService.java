@@ -1,4 +1,4 @@
-package usedclasses.service;
+package first_tasks.usedclasses.service;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package usedclasses.model;
+package first_tasks.usedclasses.model;
 
 public class Product {
 

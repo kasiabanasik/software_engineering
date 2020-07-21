@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static importfromfiles.constants.FilesConstants.PRODUCTS_FILE;
-import static importfromfiles.constants.FilesConstants.PRODUCTS_IMPORT_FILE;
+import static importfromfiles.constants.PathsConstants.PRODUCTS_FILE;
+import static importfromfiles.constants.PathsConstants.PRODUCTS_IMPORT_FILE;
 
 public class ProductService {
 

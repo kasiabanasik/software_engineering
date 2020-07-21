@@ -1,6 +1,6 @@
-package usedclasses.service;
+package first_tasks.usedclasses.service;
 
-import usedclasses.model.Product;
+import first_tasks.usedclasses.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;

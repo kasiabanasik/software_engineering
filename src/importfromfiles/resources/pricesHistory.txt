@@ -1,3 +1,4 @@
+name;price;date
 Bike;50;2020/04/07
 Ball;24;2020/04/07
 Bike;50;2020/04/07

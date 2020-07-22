@@ -8,10 +8,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static importfromfiles.constants.Errors.FILE_NOT_FOUND;
+import static importfromfiles.constants.Errors.WRITE_TO_FILE_ERROR;
+
 public class ConsoleManager {
 
-    private static final String WRITE_TO_FILE_ERROR = "Bład podczas zapisu do pliku.";
-    private static final String FILE_NOT_FOUND = "Plik nie został znaleziony";
     private static Scanner scanner = new Scanner(System.in);
 
     private ProductService productService = new ProductService();
@@ -61,9 +62,9 @@ public class ConsoleManager {
             productService.importProducts();
             displayManager.displayProductList();
         } catch (FileNotFoundException e) {
-            System.out.println(FILE_NOT_FOUND);
+            System.out.println(FILE_NOT_FOUND.getValue());
         } catch (IOException e) {
-            System.out.println(WRITE_TO_FILE_ERROR);
+            System.out.println(WRITE_TO_FILE_ERROR.getValue());
         }
     }
 
@@ -72,9 +73,9 @@ public class ConsoleManager {
             stockService.importStocks();
             displayManager.displayProductListWithStocks();
         } catch (FileNotFoundException e) {
-            System.out.println(FILE_NOT_FOUND);
+            System.out.println(FILE_NOT_FOUND.getValue());
         } catch (IOException e) {
-            System.out.println(WRITE_TO_FILE_ERROR);
+            System.out.println(WRITE_TO_FILE_ERROR.getValue());
         }
     }
 
@@ -83,9 +84,9 @@ public class ConsoleManager {
             priceService.importPrices();
             displayManager.displayProductListWithStocksAndPrices();
         } catch (FileNotFoundException e) {
-            System.out.println(FILE_NOT_FOUND);
+            System.out.println(FILE_NOT_FOUND.getValue());
         } catch (IOException e) {
-            System.out.println(WRITE_TO_FILE_ERROR);
+            System.out.println(WRITE_TO_FILE_ERROR.getValue());
         }
     }
 
